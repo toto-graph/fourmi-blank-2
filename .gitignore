@@ -1,0 +1,10 @@
+www/wp/
+www/wp-content/*
+www/wp-content/vendor
+!www/wp-content/themes
+www/wp-content/themes/*
+!www/wp-content/themes/fourmi-*
+!www/wp-content/plugins
+www/wp-content/plugins/*
+!www/wp-content/plugins/fourmi-*
+www/wp-config.php

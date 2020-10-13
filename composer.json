@@ -1,0 +1,72 @@
+{
+  "name": "toto-graph/fourmi-blank-2",
+  "description": "WordPress blank installation",
+  "version": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Théo Champanhet",
+      "homepage": "https://www.lefourmi.fr/"
+    }
+  ],
+  "type": "project",
+  "require": {
+    "composer/installers": "~1.0",
+    "wordpress/wordpress": "5.5.1",
+    "koodimonni-language/core-fr_fr": "*",
+    "wpackagist-theme/twentytwenty": "*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress/wordpress",
+        "type": "webroot",
+        "version": "5.5.1",
+        "source": {
+          "url": "https://github.com/WordPress/WordPress.git",
+          "type": "git",
+          "reference": "5.5.1"
+        },
+        "require": {
+          "fancyguy/webroot-installer": "^1.0.0"
+        }
+      }
+    },
+    {
+      "type": "composer",
+      "url": "https://wp-languages.github.io"
+    }
+  ],
+  "config": {
+    "vendor-dir": "www/wp-content/vendor"
+  },
+  "extra": {
+    "installer-paths": {
+      "www/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "www/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "webroot-dir": "www/wp",
+    "webroot-package": "wordpress/wordpress",
+    "wordpress-install-dir": "www/wp",
+    "dropin-paths": {
+      "www/wp-content/languages/": [
+        "vendor:koodimonni-language"
+      ],
+      "www/wp-content/languages/plugins/": [
+        "vendor:koodimonni-plugin-language"
+      ],
+      "www/wp-content/languages/themes/": [
+        "vendor:koodimonni-theme-language"
+      ]
+    }
+  }
+}

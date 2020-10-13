@@ -1,1 +1,1 @@
-# fourmi-blank-2
+Wordpress blank installation and theme
