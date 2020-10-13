@@ -8,3 +8,4 @@ www/wp-content/themes/*
 www/wp-content/plugins/*
 !www/wp-content/plugins/fourmi-*
 www/wp-config.php
+node_modules/
