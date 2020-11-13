@@ -1,0 +1,10 @@
+{% if title.active %}
+	<h2 class="flexible-title">
+		<span class="flexible-title-icon color-{{ title['color-icon'] }}">
+			<svg class="fmi-icon" data-icon="chevron-right"></svg>
+		</span>
+		<span class="flexible-title-text color-{{ title['color-text'] }}">
+			{{ title.text }}
+		</span>
+	</h2>
+{% endif %}

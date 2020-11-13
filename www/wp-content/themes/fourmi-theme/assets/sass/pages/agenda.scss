@@ -1,0 +1,124 @@
+.agenda {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin: calc(-0.5 * var(--rem));
+
+	&-filters {
+		margin: calc(0.5 * var(--rem));
+		width: calc(100% - var(--rem));
+	}
+
+	&-calendar {
+		margin: calc(0.5 * var(--rem));
+		width: 16rem;
+
+		&-title {
+			margin: 0 0 var(--rem);
+			font-size: 1rem;
+		}
+
+		&-close,
+		&-open {
+			margin-top: calc(0.5 * var(--rem));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: $ts;
+
+			svg {
+				width: 0.6rem;
+				height: 0.6rem;
+				margin-right: 0.5rem;
+			}
+
+			span {
+				font-size: 0.7rem;
+			}
+
+			&:hover {
+				color: $orange;
+			}
+		}
+
+		&-open {
+			margin-top: 0;
+			justify-content: flex-start;
+			display: inline-flex;
+		}
+	}
+
+	&-list {
+		margin: calc(0.5 * var(--rem));
+		width: calc(100% - 16rem - 2* var(--rem));
+
+		&-title {
+			margin: 0 0 var(--rem);
+			font-size: 1rem;
+		}
+	}
+
+	// Full + Responsive
+	&.-full {
+		.agenda-calendar {
+			width: calc(100% - 1* var(--rem));
+
+			.calendar-events {
+				display: none;
+			}
+		}
+
+		.agenda-list {
+			width: calc(100% - 1* var(--rem));
+
+			&-item {
+				width: calc(33.33% - 1 * var(--rem));
+			}
+		}
+	}
+
+	@media #{$lg} {
+		.agenda-list {
+			&-item {
+				width: calc(100% - 1 * var(--rem));
+			}
+		}
+
+		&.-full {
+			.agenda-list {
+				&-item {
+					width: calc(50% - 1 * var(--rem));
+				}
+			}
+		}
+	}
+
+	@media #{$sm} {
+		.agenda-calendar {
+			width: calc(100% - 1* var(--rem));
+			margin-bottom: var(--rem);
+		}
+
+		.agenda-list {
+			width: calc(100% - 1* var(--rem));
+
+			&-item {
+				width: calc(100% - 1 * var(--rem));
+			}
+		}
+
+		&.-full {
+			.agenda-calendar {
+				margin-bottom: calc(0.5 * var(--rem));
+			}
+
+			.agenda-list {
+				&-item {
+					width: calc(100% - 1 * var(--rem));
+				}
+			}
+		}
+	}
+}

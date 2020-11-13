@@ -1,0 +1,18 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="items">
+	{% for item in flexible.items %}
+		<div class="item">
+			<div class="item-icon color-{{ item['color-icon'] }}">
+				<svg class="fmi-icon" data-icon="{{ item.icon }}"></svg>
+			</div>
+			<div class="item-separator">
+				<svg class="fmi-icon" data-icon="chevron-right"></svg>
+			</div>
+			<div class="item-content">
+				<div class="item-content-title">{{ item.title }}</div>
+				<div class="item-content-text">{{ item.text }}</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

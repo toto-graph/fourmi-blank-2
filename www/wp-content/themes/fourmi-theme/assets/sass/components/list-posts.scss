@@ -1,0 +1,225 @@
+.list-posts {
+	margin: calc(-0.5 * var(--rem));
+	display: flex;
+	align-items: stretch;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	&-post {
+		@include blocklink;
+		margin: calc(0.5 * var(--rem));
+		width: calc(33.33% - var(--rem));
+		box-shadow: 0 0.4rem 1rem 0.2rem rgba($black, 0.1);
+		border-radius: var(--rem) var(--rem) var(--rem) 0;
+		overflow: hidden;
+		transition: box-shadow $ts-medium $easing;
+
+		@media #{$sm} {
+			width: calc(100% - var(--rem));
+		}
+		
+		&-image {
+			@include keepratio(16, 9);
+			position: relative;
+			margin: 0;
+			overflow: hidden;
+
+			@media #{$sm} {
+				&:before {
+					display: none;
+				}
+
+				height: 8rem;
+			}
+
+			img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 50% 50%;
+				transition: $ts;
+			}
+		}
+
+		&-content {
+			padding: 1rem;
+		}
+
+		&-title {
+			color: $green;
+			font-weight: $fw-semi;
+			font-size: 0.9rem;
+			line-height: 1.3;
+			margin-bottom: 0.25rem;
+		}
+
+		&-date {
+			color: $gray;
+			font-size: 0.6rem;
+		}
+
+		&-excerpt {
+			margin-top: 0.5rem;
+			font-size: 0.7rem;
+		}
+
+		&:hover {
+			box-shadow: 0 0.4rem 1rem 0.3rem rgba($black, 0.15);
+
+			img {
+				transform: scale(1.15) rotate(3deg);
+			}
+		}
+	}
+
+	&-event {
+		@include blocklink;
+		margin: calc(0.5 * var(--rem));
+		width: calc(50% - 1 * var(--rem));
+		border-radius: $radius;
+		overflow: hidden;
+		box-shadow: 0 0.4rem 1rem 0.2rem rgba($black, 0.1);
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		padding: calc(0.5 * var(--rem));
+		transition: box-shadow $ts-short $easing;
+
+		&--full {
+			width: calc(100% - var(--rem));
+		}
+
+		&.-show {
+			display: flex !important;
+		}
+
+		@media #{$sm} {
+			width: calc(100% - var(--rem));
+		}
+
+		&--association {
+			.list-posts-event-date {
+				background: $green;
+			}
+
+			.list-posts-event-content-organizer {
+				color: $green;
+			}
+
+			.list-posts-event-content-title {
+				&:after {
+					background: $green;
+					content: 'A';
+				}
+			}
+
+			&:hover {
+				.list-posts-event-date {
+					background: $green-dark;
+				}
+			}
+		}
+		
+		&--loft {
+			.list-posts-event-date {
+				background: $orange;
+			}
+
+			.list-posts-event-content-organizer {
+				color: $orange;
+			}
+
+			.list-posts-event-content-title {
+				&:after {
+					background: $orange;
+					content: 'L';
+				}
+			}
+
+			&:hover {
+				.list-posts-event-date {
+					background: $orange-dark;
+				}
+			}
+		}
+		
+		&-date {
+			width: 4rem;
+			background: $gray;
+			border-radius: $radius $radius 0 $radius;
+			padding: 0.5rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: $white;
+			line-height: 1.1;
+			transition: $ts;
+
+			&-day {
+				font-size: 1.5rem;
+			}
+		}
+
+		&-content {
+			width: calc(100% - 4rem - 0.5 * var(--rem));
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			justify-content: center;
+			padding: 0.25rem 0;
+
+			&-title {
+				font-size: 0.8rem;
+				margin: 0;
+				font-weight: $fw-semi;
+				margin-bottom: 0.25rem;
+				padding-right: 1.8rem;
+				position: relative;
+
+				&:after {
+					position: absolute;
+					right: 0;
+					top: -0.15rem;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 1.3rem;
+					height: 1.3rem;
+					border-radius: 100%;
+					background: $gray;
+					color: $white;
+					font-weight: $fw-semi;
+					font-size: 0.7rem;
+				}
+			}
+
+			&-organizer {
+				color: $gray;
+				font-size: 0.6rem;
+
+				span {
+					font-weight: $fw-semi;
+				}
+			}
+
+			&-excerpt {
+				font-size: 0.6rem;
+				margin: 0.5rem 0 0 0;
+			}
+
+			&-restricted {
+				font-size: 0.5rem;
+				font-weight: $fw-semi;
+				margin: 0.5rem 0 0 0;
+			}
+		}
+
+		&:hover {
+			box-shadow: 0 0.4rem 1rem 0.3rem rgba($black, 0.15);
+		}
+	}
+}

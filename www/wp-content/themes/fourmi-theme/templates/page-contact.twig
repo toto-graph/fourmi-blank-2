@@ -1,0 +1,62 @@
+{% extends "page.twig" %}
+
+{% block breadcrumb %}
+	{# No breadcrumb #}
+{% endblock %}
+
+{% block page_title %}
+	<section class="main-page-title">
+		<div class="main-page-title-wrapper main-page-title-wrapper--contact">
+			<div class="main-page-title-image">
+				{% if post.thumbnail %}
+					<img src="{{ post.thumbnail.src('fmi-1') }}" alt="{{ post.title }}">
+				{% endif %}
+			</div>
+			<div class="main-page-title-contact">
+				<div class="main-page-title-contact-container">
+					<div class="main-page-title-contact-wrapper">
+						<div class="main-page-title-contact-item">
+							<div class="main-page-title-contact-item-icon">
+								<svg class="fmi-icon" data-icon="contact"></svg>
+							</div>
+							<div class="main-page-title-contact-item-text">
+								<a href="mailto:{{ options.contact.email }}">{{ options.contact.email }}</a>
+							</div>
+						</div>
+						<div class="main-page-title-contact-item">
+							<div class="main-page-title-contact-item-icon">
+								<svg class="fmi-icon" data-icon="location"></svg>
+							</div>
+							<div class="main-page-title-contact-item-text">
+								{{ options.contact.address }}
+								{% if options.contact.google_maps %}
+									<div class="main-page-title-contact-item-link-more">
+										<a href="{{ options.contact.google_maps }}" class="main-page-title-contact-item-link-more-link" target="_blank">Ouvrir sur Google Maps</a>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="main-page-title-contact-item">
+							<div class="main-page-title-contact-item-icon">
+								<svg class="fmi-icon" data-icon="phone"></svg>
+							</div>
+							<div class="main-page-title-contact-item-text">
+								<a href="tel:{{ options.contact.phone }}">{{ options.contact.phone }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="{{ post.class }}">
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+		</div>
+	</section>
+{% endblock %}

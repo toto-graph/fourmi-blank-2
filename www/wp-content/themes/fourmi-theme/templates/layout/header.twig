@@ -1,0 +1,51 @@
+<header class="main-header" role="banner">
+	<div class="main-header-wrapper">
+		<div class="main-header-logo">
+			<a href="{{ site.url }}">
+				<img src="{{ 'logo.svg'|theme_image }}" alt="Logo">
+			</a>
+		</div>
+
+		<div class="main-header-content">
+			<nav class="main-header-social" role="navigation">
+				{% include 'components/menu-social.twig' with { items: menus['social'].get_items } %}
+			</nav>
+
+			<nav class="main-header-nav" role="navigation">
+				{% include 'components/menu.twig' with { items: menus['main-header-nav'].get_items } %}
+			</nav>
+		</div>
+
+		<aside class="main-header-button">
+			<a href="{{ links.contact }}" class="button -block -rtr -orange">
+				<svg class="fmi-icon" data-icon="contact"></svg>
+				<span>Contact</span>
+			</a>
+		</aside>
+
+		<aside class="main-header-button-mobile" data-nav-mobile-component="1" data-nav-mobile-trigger="1">
+			<span>
+				<b class="b1"></b>
+				<b class="b2"></b>
+				<b class="b3"></b>
+			</span>
+		</aside>
+	</div>
+	<div class="main-header-wrapper-footer">
+		<a href="#newsletter" class="button -block -rtr -green">
+			<svg class="fmi-icon" data-icon="newsletter"></svg>
+			<span>Newsletter</span>
+		</a>
+	</div>
+	<nav class="main-header-nav-mobile" role="navigation" data-nav-mobile-component="1">
+		<div class="main-header-nav-mobile-logo">
+			<a href="{{ site.url }}">
+				<img src="{{ 'logo.svg'|theme_image }}" alt="Logo">
+			</a>
+		</div>
+		
+		<ul class="menu">
+			{% include 'components/menu.twig' with { items: menus['main-header-nav-mobile'].get_items } %}
+		</ul>
+	</nav>
+</header>

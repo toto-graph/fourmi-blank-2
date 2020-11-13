@@ -1,0 +1,12 @@
+<div class="wrapper">
+	{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+	<div class="numbers">
+		{% for number in flexible.numbers %}
+			<div class="number">
+				<div class="number-number">{{ number.number }}</div>
+				<div class="number-text">{{ number.text }}</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>

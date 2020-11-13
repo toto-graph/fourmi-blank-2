@@ -1,0 +1,31 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="wrapper wrapper-nb-{{ flexible.portraits|length }}">
+	{% for portrait in flexible.portraits %}
+		{% set image = TimberImage(portrait.image) %}
+		<div class="portrait {% if portrait.link %}has-link{% endif %}">
+			{% if portrait.link %}
+				<a href="{{ portrait.link.link }}">&nbsp;</a>
+			{% endif %}
+
+			<div class="portrait-image">
+				{% if portrait.icon %}
+					<div class="portrait-icon">
+						<svg class="fmi-icon" data-icon="{{ portrait.icon }}"></svg>
+					</div>
+				{% endif %}
+				<figure class="image">
+					<img src="{{ image.src('fmi-3') }}">
+				</figure>
+			</div>
+
+			<div class="portrait-content">
+				<div class="portrait-content-name">{{ portrait.name }}</div>
+				{% if portrait.age %}
+					<div class="portrait-content-age">{{ portrait.age }} ans</div>
+				{% endif %}
+				<div class="portrait-content-text">{{ portrait.text }}</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

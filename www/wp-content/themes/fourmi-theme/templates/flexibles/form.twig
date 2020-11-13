@@ -1,0 +1,12 @@
+<div class="form">
+	{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+	{% if flexible.description %}
+		<div class="form-description wysiwyg-text">
+			{{ flexible.description }}
+		</div>
+	{% endif %}
+
+	{% set shortcode = '[formidable id=' ~ flexible.form ~ ']' %}
+	{{ function('do_shortcode', shortcode) }}
+</div>

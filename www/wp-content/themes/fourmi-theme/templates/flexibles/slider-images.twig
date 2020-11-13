@@ -1,0 +1,22 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="slider-images">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			{% for item in flexible.images %}
+				{% set image = TimberImage(item.image) %}
+				<div class="swiper-slide">
+					<figure class="image">
+						<img src="{{ image.src('fmi-2') }}">
+					</figure>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="swiper-navigation-button swiper-navigation-button-prev">
+		<svg class="fmi-icon" data-icon="chevron-left"></svg>
+	</div>
+	<div class="swiper-navigation-button swiper-navigation-button-next">
+		<svg class="fmi-icon" data-icon="chevron-right"></svg>
+	</div>
+</div>

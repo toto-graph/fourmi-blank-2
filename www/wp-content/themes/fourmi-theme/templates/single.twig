@@ -1,0 +1,30 @@
+{% extends "layout/html.twig" %}
+
+{% block page_title %}
+	{% include 'components/page-title.twig' %}
+{% endblock %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="single {{ post.class }}">
+				<header class="single-header">
+					<h1 class="single-title">{{ post.title }}</h1>
+					{% if post.post_type == 'post' %}
+						<div class="single-meta">
+							<span class="single-meta-date">{{ post.date }}</span>
+							<span class="single-meta-separator">/</span>
+							<span class="single-meta-category">{{ post.category }}</span>
+						</div>
+					{% endif %}
+				</header>
+
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+		</div>
+	</section>
+
+	<script type="application/ld+json">
+		{{ post.get_schema()|json_encode }}
+	</script>
+{% endblock %}

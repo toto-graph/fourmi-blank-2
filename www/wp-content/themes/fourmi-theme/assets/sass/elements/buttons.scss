@@ -1,0 +1,115 @@
+.button,
+button {
+	display: inline-flex;
+	width: auto;
+	align-items: center;
+	justify-content: center;
+	font-weight: $fw-regular;
+	background: $orange;
+	color: $white;
+	font-size: 0.8rem;
+	border-radius: $radius;
+	padding: 0.6rem 1rem;
+	transition: $ts;
+	min-height: 2.5rem;
+	border: none;
+	cursor: pointer;
+	outline: none !important;
+
+	svg {
+		width: 1.2rem;
+		height: 1.2rem;
+
+		&:first-child {
+			margin-right: 0.5rem;
+		}
+
+		&:last-child {
+			margin-left: 0.5rem;
+		}
+
+		&[data-icon*="chevron"] {
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+	}
+
+	&:hover {
+		color: $white;
+	}
+
+	&.-block {
+		display: flex;
+		width: 100%;
+	}
+
+	&.-rtr {
+		border-top-right-radius: 0;
+	}
+
+	&.-rtl {
+		border-top-left-radius: 0;
+	}
+
+	&.-rbr {
+		border-bottom-right-radius: 0;
+	}
+
+	&.-rbl {
+		border-bottom-left-radius: 0;
+	}
+
+	&.-orange {
+		background: $orange;
+		color: $white;
+
+		&:hover {
+			background: darken($orange, 6%);
+			color: $white;
+		}
+	}
+
+	&.-orange-lime {
+		background: $orange-lime;
+		color: $orange;
+
+		&:hover {
+			background: darken($orange-lime, 6%);
+			color: darken($orange, 6%);
+		}
+	}
+
+	&.-green {
+		background: $green;
+		color: $white;
+
+		&:hover {
+			background: darken($green, 6%);
+			color: $white;
+		}
+	}
+
+	&.-green-medium {
+		background: $green-medium;
+		color: $white;
+
+		&:hover {
+			background: $green;
+			color: $white;
+		}
+	}
+
+	&.frm_button_submit {
+		border: solid 1px $white;
+		color: $white;
+		background: none;
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+		border-radius: 2.5rem;
+
+		&:hover {
+			color: $orange;
+			background: $white;
+		}
+	}
+}

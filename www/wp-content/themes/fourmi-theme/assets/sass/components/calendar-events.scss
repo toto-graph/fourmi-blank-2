@@ -1,0 +1,192 @@
+.calendar-events {
+	padding: 1rem;
+	box-shadow: 0 0.4rem 1rem 0.2rem rgba($black, 0.1);
+	border-radius: $radius;
+
+	.clndr {
+		cursor: default;
+
+		&-controls {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+			padding: 0.5rem 0;
+
+			.monthyear {
+				width: calc(100% - 4rem);
+				text-align: center;
+				color: $green;
+			}
+
+			.month {
+				font-family: $fontScript;
+				font-size: 2rem;
+				text-transform: capitalize;
+				line-height: 1;
+				display: block;
+				transform: translateX(-0.2rem);
+			}
+
+			.year {
+				display: block;
+				font-family: $font;
+				font-size: 0.7rem;
+				font-weight: $fw-semi;
+			}
+		}
+
+		&-previous-button {
+			font-size: 0;
+			width: 1.4rem;
+			height: 1.4rem;
+			cursor: pointer;
+			background: url($imgpath+'calendar-prev.svg') center center no-repeat;
+			background-size: 0.4rem;
+			border-radius: 100%;
+			box-shadow: 0 0.2rem 0.5rem 0.1rem rgba($black, 0.15);
+			transition: $ts;
+
+			&:hover {
+				box-shadow: 0 0.2rem 0.5rem 0.2rem rgba($black, 0.2);
+			}
+		}
+
+		&-next-button {
+			font-size: 0;
+			width: 1.4rem;
+			height: 1.4rem;
+			cursor: pointer;
+			background: url($imgpath+'calendar-next.svg') center center no-repeat;
+			background-size: 0.4rem;
+			border-radius: 100%;
+			box-shadow: 0 0.2rem 0.5rem 0.1rem rgba($black, 0.15);
+			transition: $ts;
+
+			&:hover {
+				box-shadow: 0 0.2rem 0.5rem 0.2rem rgba($black, 0.2);
+			}
+		}
+
+		&-grid {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			.header-day {
+				width: 14%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.25rem;
+				margin-bottom: 0.25rem;
+
+				span {
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: $fw-semi;
+					color: $green;
+					text-transform: uppercase;
+					font-size: 0.7rem;
+				}
+			}
+
+			.day {
+				width: 14%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.25rem;
+				position: relative;
+
+				span {
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-weight: $fw-semi;
+					width: 1.4rem;
+					height: 1.4rem;
+					font-size: 0.6rem;
+					border-radius: 100%;
+					transition: $ts;
+				}
+
+				&.adjacent-month {
+					span {
+						display: none;
+					}
+				}
+
+				&.today {
+					span {
+						color: $green;
+						background: $gray-lime;
+					}
+				}
+
+				&.event {
+					span {
+						color: $white;
+						background: $black;
+						cursor: pointer;
+
+						&:hover {
+							background: rgba($black, 0.9);
+						}
+					}
+				}
+			}
+		}
+
+		&-tooltip {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 12rem;
+			background: $white;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+			border: solid 1px rgba(0,0,0,0.1);
+			z-index: 5;
+			border-radius: $radius;
+			overflow: hidden;
+
+			&-item {
+				border-bottom: solid 1px rgba(0,0,0,0.1);
+				display: flex;
+				padding: 0.5rem;
+				align-items: center;
+				justify-content: space-between;
+				font-size: 0.6rem;
+				transition: $ts;
+
+				&-time {
+					width: 1.6rem;
+					font-weight: $fw-semi;
+					font-style: normal;
+					color: $green;
+				}
+
+				&-title {
+					font-style: normal;
+					width: calc(100% - 1.6rem);
+					padding-left: 0.5rem;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				&:hover {
+					background: $gray-lime;
+					color: $green;
+				}
+			}
+		}
+	}
+
+}

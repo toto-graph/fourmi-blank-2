@@ -1,0 +1,126 @@
+.filters {
+	margin-bottom: calc(1.5 * var(--rem));
+
+	&-list {
+		margin: calc(-0.25 * var(--rem));
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		list-style-type: none;
+		padding: 0;
+	}
+
+	&-item {
+		margin: calc(0.25 * var(--rem));
+
+		&-link {
+			border-radius: 2*$radius;
+			background: $white;
+			box-shadow: 0 0.3rem 0.8rem 0.1rem rgba($black, 0.05);
+			line-height: 1rem;
+			padding: 0.5rem 1rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: $ts;
+
+			&:hover {
+				box-shadow: 0 0.4rem 1rem 0.15rem rgba($black, 0.15);
+			}
+
+			&--active {
+				box-shadow: 0 0.4rem 1rem 0.15rem rgba($black, 0.15);
+				
+				.filters-item-text {
+					font-weight: $fw-semi;
+					color: $black;
+				}
+
+				.filters-item-checkbox {
+					color: $orange;
+
+					svg {
+						opacity: 1;
+					}
+				}
+			}
+
+			&--association {
+				.filters-item-icon {
+					background: $green;
+
+					&:before {
+						content: 'A';
+					}
+				}
+
+				&.filters-item-link--active {
+					.filters-item-text {
+						color: $green;
+					}
+
+					.filters-item-checkbox {
+						color: $green;
+					}
+				}
+			}
+
+			&--loft {
+				.filters-item-icon {
+					background: $orange;
+
+					&:before {
+						content: 'L';
+					}
+				}
+
+				&.filters-item-link--active {
+					.filters-item-text {
+						color: $orange;
+					}
+
+					.filters-item-checkbox {
+						color: $orange;
+					}
+				}
+			}
+		}
+
+		&-icon {
+			margin-right: 0.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 1.3rem;
+			height: 1.3rem;
+			border-radius: 100%;
+			background: $gray;
+			color: $white;
+			font-weight: $fw-semi;
+			font-size: 0.7rem;
+		}
+
+		&-text {
+			font-size: 0.7rem;
+			margin-right: 0.5rem;
+			color: $gray;
+		}
+
+		&-checkbox {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: solid 2px;
+			border-radius: 0.5*$radius;
+			padding: 0.15rem;
+			color: $gray;
+
+			svg {
+				width: 0.5rem;
+				height: 0.5rem;
+				opacity: 0;
+			}
+		}
+	}
+}

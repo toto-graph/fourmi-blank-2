@@ -1,0 +1,13 @@
+<aside class="main-breadcrumb-wrapper">
+	<div class="container">
+		<ol class="main-breadcrumb">
+			{% for item in breadcrumb %}
+				<li class="main-breadcrumb-item">
+					<a class="main-breadcrumb-item-link" href="{{ item.link }}">{{ item.label }}</a>
+				</li>
+			{% endfor %}
+		</ol>
+	</div>
+	
+	<script type="application/ld+json">{{ breadcrumb_schema }}</script>
+</aside>

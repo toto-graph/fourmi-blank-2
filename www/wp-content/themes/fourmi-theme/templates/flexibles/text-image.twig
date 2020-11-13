@@ -1,0 +1,32 @@
+{% set style = flexible.style %}
+{% set text = flexible.text %}
+{% set image = TimberImage(flexible.image) %}
+{% set link = flexible.link %}
+
+<div class="wrapper wrapper-style-{{ style.style }} wrapper-image-{{ style['image-position'] }} wrapper-color-{{ style.color }} {% if link %}has-link{% endif %}">
+	{% if link %}
+		<a href="{{ link.link }}">&nbsp;</a>
+	{% endif %}
+
+	<figure class="col-image">
+		<img src="{{ image.src('fmi-2') }}">
+	</figure>
+	<div class="col-text">
+		<div class="text">
+			{% include 'flexibles/_flexible-title.twig' with { title: text.title } %}
+
+			<div class="wysiwyg-text">
+				{{ text.text }}
+			</div>
+		</div>
+		{% if text.quote.active %}
+			<div class="quote">
+				<div class="quote-text">
+					<svg class="fmi-icon" data-icon="quote"></svg>
+					<span>{{ text.quote.text }}</span>
+				</div>
+				<div class="quote-author">{{ text.quote.author }}</div>
+			</div>
+		{% endif %}
+	</div>
+</div>

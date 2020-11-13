@@ -1,0 +1,25 @@
+.fmi {
+	&-flexible {
+		&--title {
+
+		}
+	}
+
+	&-wysiwyg {
+		@extend .wysiwyg-text;
+	}
+
+	&-image {
+		&-legend {
+
+		}
+	}
+
+	&-accordion {
+		&-item {
+			&-title {
+
+			}
+		}
+	}
+}

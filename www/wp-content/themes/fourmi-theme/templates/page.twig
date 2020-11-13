@@ -1,0 +1,15 @@
+{% extends "layout/html.twig" %}
+
+{% block page_title %}
+	{% include 'components/page-title.twig' with { title: post.title } %}
+{% endblock %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="{{ post.class }}">
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+		</div>
+	</section>
+{% endblock %}

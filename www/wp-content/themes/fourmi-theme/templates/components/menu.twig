@@ -1,0 +1,8 @@
+<ul class="menu">
+	{% for item in items %}
+		{% set current = item.current or 'current-page-ancestor' in item.class %}
+		<li class="menu-item">
+			<a href="{{ item.link }}" class="menu-item-link {% if current %}menu-item-link--active{% endif %}">{{ item.title }}</a>
+		</li>
+	{% endfor %}
+</ul>

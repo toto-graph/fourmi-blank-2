@@ -1,0 +1,22 @@
+<div class="popin popin--newsletter" data-trigger="#newsletter">
+	<div class="popin-overlay"></div>
+	<div class="popin-content">
+		<div class="popin-close">
+			<svg class="fmi-icon" data-icon="close"></svg>
+		</div>
+
+		<div class="newsletter">
+			<div class="newsletter-icon">
+				<svg class="fmi-icon" data-icon="newsletter"></svg>
+			</div>
+			<div class="newsletter-title">{{ options.newsletter.title }}</div>
+			<div class="newsletter-subtitle">{{ options.newsletter.subtitle }}</div>
+			<div class="newsletter-mentions">{{ options.newsletter.mentions }}</div>
+
+			<div class="newsletter-form">
+				{% set shortcode = '[mailjet_subscribe widget_id=' ~ options.newsletter.widget_id ~ ']' %}
+				{{ function('do_shortcode', shortcode) }}
+			</div>
+		</div>
+	</div>
+</div>

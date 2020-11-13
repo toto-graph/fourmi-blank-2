@@ -1,0 +1,23 @@
+{% extends "layout/html.twig" %}
+
+{% block breadcrumb %}
+	{# No breadcrumb #}
+{% endblock %}
+
+{% block menu_home %}
+	<nav class="menu-home">
+		<div class="container">
+			{% include 'components/menu-home.twig' with { items: menu_home.get_items } %}
+		</div>
+	</nav>
+{% endblock %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="{{ post.class }}">
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+		</div>
+	</section>
+{% endblock %}

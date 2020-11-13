@@ -1,0 +1,26 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="list-posts">
+	{% for event in flexible.events %}
+		{% set category = event.category %}
+
+		<article class="list-posts-event {% if category %}list-posts-event--{{ category.slug }}{% endif %} {% if flexible.events|length == 1 %}list-posts-event--full{% endif %}">
+			<a href="{{ event.link }}">&nbsp;</a>
+			<div class="list-posts-event-date">
+				{% set date_start = event.get_date_start() %}
+				<span class="list-posts-event-date-day">{{ date_start.daynum }}</span>
+				<span class="list-posts-event-date-month">{{ date_start.monthshort }}</span>
+			</div>
+			<div class="list-posts-event-content">
+				<h3 class="list-posts-event-content-title">{{ event.title }}</h3>
+				{% if event.organizer %}
+					<div class="list-posts-event-content-organizer">by <span>{{ event.organizer }}</span></div>
+				{% endif %}
+				<p class="list-posts-event-content-excerpt">{{ event.preview.read_more('') }}</p>
+				{% if event.restricted %}
+					<div class="list-posts-event-content-restricted">Réservé aux membres de l'association</div>
+				{% endif %}
+			</div>
+		</article>
+	{% endfor %}
+</div>

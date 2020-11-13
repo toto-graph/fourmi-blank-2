@@ -1,0 +1,10 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="gallery-images">
+	{% for item in flexible.images %}
+		{% set image = TimberImage(item.image) %}
+		<figure class="image">
+			<img src="{{ image.src('fmi-2') }}">
+		</figure>
+	{% endfor %}
+</div>

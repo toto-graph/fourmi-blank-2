@@ -1,0 +1,27 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="wrapper wrapper-nb-{{ flexible.testimonies|length }}">
+	{% for testimony in flexible.testimonies %}
+		{% set image = TimberImage(testimony.image) %}
+		<div class="testimony {% if testimony.link %}has-link{% endif %}">
+			{% if testimony.link %}
+				<a href="{{ testimony.link.link }}">&nbsp;</a>
+			{% endif %}
+
+			<div class="testimony-image">
+				<figure class="image">
+					<img src="{{ image.src('fmi-3') }}">
+				</figure>
+			</div>
+
+			<div class="testimony-title">Temoignage</div>
+			<div class="testimony-text">{{ testimony.text }}</div>
+			<div class="testimony-name">
+				<span>{{ testimony.name }}</span>
+				<div class="testimony-icon">
+					<svg class="fmi-icon" data-icon="quote-serif"></svg>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

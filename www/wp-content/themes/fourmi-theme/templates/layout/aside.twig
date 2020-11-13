@@ -1,0 +1,37 @@
+<aside class="main-aside">
+	<div class="container">
+		<div class="main-aside-wrapper">
+			<div class="main-aside-search">
+				<div class="main-aside-search-wrapper">
+					<svg class="fmi-icon" data-icon="search"></svg>
+					<input type="text" class="main-aside-search-input" placeholder="Je recherche quelque chose de précis ici" name="main-search">
+				</div>
+			</div>
+			<div class="main-aside-buttons">
+				<a href="{{ links.agenda }}" class="button -rtl -orange-lime">
+					<svg class="fmi-icon" data-icon="calendar"></svg>
+					<span>Agenda</span>
+					<svg class="fmi-icon" data-icon="chevron-right"></svg>
+				</a>
+				<a href="{{ options.adhesion_link }}" target="_blank" class="button -rtl -orange">
+					<span>Adhésion</span>
+					<svg class="fmi-icon" data-icon="chevron-right"></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-search-results">
+		<div class="main-search-results-close" role="button">
+			<svg class="fmi-icon" data-icon="close"></svg>
+		</div>
+		<div class="container">
+			<div class="main-search-results-loader">
+				<img src="{{ 'search-loader.gif'|theme_image }}">
+			</div>
+			<div class="main-search-results-wrapper">
+				{# Populated in AJAX #}
+			</div>
+		</div>
+	</div>
+</aside>

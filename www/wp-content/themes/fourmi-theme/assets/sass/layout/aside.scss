@@ -1,0 +1,392 @@
+.main-aside {
+	position: fixed;
+	top: 0;
+	left: 11rem;
+	right: 0;
+	background: $white;
+	z-index: 60;
+	height: calc(2.5rem + var(--rem));
+	padding: calc(0.5 * var(--rem)) var(--rem);
+	transition: $ts;
+
+	&.-active {
+		box-shadow: 0 0.4rem 1rem 0.2rem rgba($black, 0.1);
+	}
+
+	@media #{$md} {
+		display: none;
+	}
+
+	&-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&-search {
+		flex-grow: 1;
+
+		&-wrapper {
+			position: relative;
+			width: 100%;
+		}
+
+		&-input {
+			width: 100%;
+			background: $gray-lime;
+			border: none;
+			border-radius: 999px;
+			outline: none !important;
+			font-family: $font;
+			font-size: 0.7rem;
+			font-weight: $fw-regular;
+			color: $black;
+			line-height: 1.5rem;
+			padding: 0.5rem 1rem 0.5rem 3.1rem;
+
+			&:focus {
+				background: darken($gray-lime, 2%);
+			}
+		}
+
+		svg {
+			fill: $black;
+			width: 1.1rem;
+			height: 1.1rem;
+			position: absolute;
+			left: 1rem;
+			top: 0.7rem;
+			pointer-events: none;
+		}
+	}
+
+	&-buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.button {
+			margin-left: calc(0.5 * var(--rem));
+		}
+	}
+}
+
+.admin-bar {
+	.main-aside {
+		top: 32px;
+	}
+
+	.main-search-results {
+		height: calc(100vh - 2.5rem - var(--rem) - 32px);
+	}
+}
+
+.main-search-results {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	right: 0;
+	background: $orange-lime;
+	height: calc(100vh - 2.5rem - var(--rem));
+	padding: var(--rem);
+	@include fadeout;
+	overflow-y: scroll;
+
+	&.-active {
+		@include fadein;
+	}
+
+	&-close {
+		position: absolute;
+		top: calc(0.5 * var(--rem));
+		right: calc(0.5 * var(--rem));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		padding: 0.1rem;
+
+		svg {
+			width: 0.8rem;
+			height: 0.8rem;
+			fill: $orange-dark;
+		}
+	}
+
+	&-loader {
+		
+	}
+
+	&-line {
+		margin-bottom: var(--rem);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&-title {
+			color: $orange !important;
+			margin-bottom: calc(0.75 * var(--rem)) !important;
+		}
+
+		&-link {
+			text-align: center;
+			margin-top: calc(0.75 * var(--rem));
+
+			a {
+				color: $orange;
+				font-size: 0.6rem;
+				font-weight: $fw-semi;
+				border-bottom: dashed 1px;
+
+				&:hover {
+					color: $orange-dark;
+					border-bottom: solid 1px;
+				}
+			}
+		}
+
+		&-content {
+			margin: calc(-0.25 * var(--rem));
+			display: flex;
+			align-items: stretch;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+		}
+
+		&-item {
+			@include blocklink;
+			background: $white;
+			margin: calc(0.25 * var(--rem));
+			width: calc(33.33% - 0.5 * var(--rem));
+			box-shadow: 0 0.2rem 0.6rem rgba($black, 0.1);
+			border-radius: var(--rem);
+			overflow: hidden;
+			transition: box-shadow $ts-medium $easing;
+
+			&:hover {
+				box-shadow: 0 0.2rem 0.6rem 0.1rem rgba($black, 0.15);
+			}
+		}
+
+		.item-event {
+			display: flex;
+			align-items: stretch;
+			justify-content: space-between;
+			padding: calc(0.5 * var(--rem));
+
+			&--association {
+				.item-event-date {
+					background: $green;
+				}
+
+				.item-event-content-organizer {
+					color: $green;
+				}
+
+				.item-event-content-title {
+					&:after {
+						background: $green;
+						content: 'A';
+					}
+				}
+
+				&:hover {
+					.item-event-date {
+						background: $green-dark;
+					}
+				}
+			}
+			
+			&--loft {
+				.item-event-date {
+					background: $orange;
+				}
+
+				.item-event-content-organizer {
+					color: $orange;
+				}
+
+				.item-event-content-title {
+					&:after {
+						background: $orange;
+						content: 'L';
+					}
+				}
+
+				&:hover {
+					.item-event-date {
+						background: $orange-dark;
+					}
+				}
+			}
+			
+			&-date {
+				width: 3rem;
+				background: $gray;
+				border-radius: $radius $radius 0 $radius;
+				padding: 0.5rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				color: $white;
+				line-height: 1.1;
+				transition: $ts;
+
+				&-day {
+					font-size: 1.4rem;
+				}
+			}
+
+			&-content {
+				width: calc(100% - 3rem - 0.5 * var(--rem));
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: center;
+				padding: 0.25rem 0;
+
+				&-title {
+					font-size: 0.8rem;
+					margin: 0;
+					font-weight: $fw-semi;
+					margin-bottom: 0.25rem;
+					padding-right: 1.8rem;
+					position: relative;
+
+					&:after {
+						position: absolute;
+						right: 0;
+						top: -0.15rem;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 1.3rem;
+						height: 1.3rem;
+						border-radius: 100%;
+						background: $gray;
+						color: $white;
+						font-weight: $fw-semi;
+						font-size: 0.7rem;
+					}
+				}
+
+				&-organizer {
+					color: $gray;
+					font-size: 0.6rem;
+
+					span {
+						font-weight: $fw-semi;
+					}
+				}
+			}
+		}
+
+		.item-article {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: calc(0.5 * var(--rem)) var(--rem);
+
+			&-content {
+				width: calc(100% - 3rem);
+			}
+
+			&-title {
+				color: $green;
+				font-weight: $fw-semi;
+				font-size: 0.9rem;
+				line-height: 1.3;
+			}
+
+			&-date {
+				color: $gray;
+				font-size: 0.6rem;
+			}
+
+			&-icon {
+				width: 3rem;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				color: $orange;
+				transition: $ts;
+
+				svg {
+					width: 0.6rem;
+					height: 0.6rem;
+				}
+			}
+
+			&:hover {
+				.item-article-icon {
+					transform: translateX(4px);
+				}
+			}
+		}
+
+		.item-page {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: calc(0.5 * var(--rem)) var(--rem);
+
+			&-content {
+				width: calc(100% - 3rem);
+			}
+
+			&-title {
+				color: $green;
+				font-weight: $fw-semi;
+				font-size: 0.7rem;
+				line-height: 1.3;
+			}
+
+			&-icon {
+				width: 3rem;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				color: $orange;
+				transition: $ts;
+
+				svg {
+					width: 0.6rem;
+					height: 0.6rem;
+				}
+			}
+
+			&:hover {
+				.item-page-icon {
+					transform: translateX(4px);
+				}
+			}
+		}		
+	}
+
+	&-empty {
+		&-icon {
+			text-align: center;
+			padding-top: calc(0.5 * var(--rem));
+			color: rgba($orange, 0.5);
+
+			svg {
+				width: 6rem;
+				height: 6rem;
+			}
+		}
+
+		&-text {
+			text-align: center;
+			margin-top: calc(1.5 * var(--rem));
+			font-size: 0.7rem;
+
+			strong {
+				display: block;
+				font-size: 1.4rem;
+				color: $orange;
+			}
+		}
+	}
+}

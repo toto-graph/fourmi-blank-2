@@ -1,0 +1,24 @@
+<div class="calendar-events" data-id="{{ calendar.id }}">
+	<script type="text/javascript">
+		var calendarEvents = calendarEvents ? calendarEvents : {};
+		calendarEvents['{{ calendar.id }}'] = {{ calendar.events|json_encode }};
+	</script>
+	<script type="text/template" class="clndr-template">
+		<div class="clndr-controls">
+			<div class="clndr-previous-button">&lsaquo;</div>
+			<div class="monthyear">
+				<span class="month"><%= month %></span>
+				<span class="year"><%= year %></span>
+			</div>
+			<div class="clndr-next-button">&rsaquo;</div>
+		</div>
+		<div class="clndr-grid">
+			<% _.each(daysOfTheWeek, function (day) { %>
+				<div class="header-day"><span><%= day %></span></div>
+			<% }) %>
+			<% _.each(days, function (day) { %>
+				<div class="<%= day.classes %>"><span><%= day.day %></span></div>
+			<% }) %>
+		</div>
+	</script>
+</div>

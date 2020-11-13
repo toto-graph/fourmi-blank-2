@@ -1,0 +1,17 @@
+{% include 'flexibles/_flexible-title.twig' with { title: flexible.title } %}
+
+<div class="list-posts">
+	{% for article in flexible.articles %}
+		<article class="list-posts-post">
+			<a href="{{ article.link }}">&nbsp;</a>
+			<figure class="list-posts-post-image">
+				<img src="{{ article.thumbnail.src('fmi-3') }}">
+			</figure>
+			<div class="list-posts-post-content">
+				<div class="list-posts-post-title">{{ article.title }}</div>
+				<div class="list-posts-post-date">{{ article.date }}</div>
+				<div class="list-posts-post-excerpt">{{ article.preview.read_more('') }}</div>
+			</div>
+		</article>
+	{% endfor %}
+</div>

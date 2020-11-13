@@ -1,0 +1,105 @@
+{% if events|length %}
+	<div class="main-search-results-line">
+		<h2 class="flexible-title main-search-results-line-title">
+			<span class="flexible-title-icon">
+				<svg class="fmi-icon" data-icon="chevron-right"></svg>
+			</span>
+			<span class="flexible-title-text">
+				&Eacute;vénements
+			</span>
+		</h2>
+
+		<div class="main-search-results-line-content">
+			{% for event in events %}
+				{% set category = event.category %}
+
+				<article class="main-search-results-line-item item-event {% if category %}item-event--{{ category.slug }}{% endif %}">
+					<a href="{{ event.link }}">&nbsp;</a>
+					{% set date_start = event.get_date_start() %}
+					<div class="item-event-date">
+						<span class="item-event-date-day">{{ date_start.daynum }}</span>
+						<span class="item-event-date-month">{{ date_start.monthshort }}</span>
+					</div>
+					<div class="item-event-content">
+						<h3 class="item-event-content-title">{{ event.title }}</h3>
+						{% if event.organizer %}
+							<div class="item-event-content-organizer">by <span>{{ event.organizer }}</span></div>
+						{% endif %}
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+
+		<div class="main-search-results-line-link">
+			<a href="{{ links.agenda }}">Voir tous les événements</a>
+		</div>
+	</div>
+{% endif %}
+
+{% if articles|length %}
+	<div class="main-search-results-line">
+		<h2 class="flexible-title main-search-results-line-title">
+			<span class="flexible-title-icon">
+				<svg class="fmi-icon" data-icon="chevron-right"></svg>
+			</span>
+			<span class="flexible-title-text">
+				Articles de blog
+			</span>
+		</h2>
+
+		<div class="main-search-results-line-content">
+			{% for article in articles %}
+				<article class="main-search-results-line-item item-article">
+					<a href="{{ article.link }}">&nbsp;</a>
+					<div class="item-article-content">
+						<div class="item-article-title">{{ article.title }}</div>
+						<div class="item-article-date">{{ article.date }}</div>
+					</div>
+					<div class="item-article-icon">
+						<svg class="fmi-icon" data-icon="chevron-right"></svg>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+		
+		<div class="main-search-results-line-link">
+			<a href="{{ links.blog }}">Voir tous les articles</a>
+		</div>
+	</div>
+{% endif %}
+
+{% if pages|length %}
+	<div class="main-search-results-line">
+		<h2 class="flexible-title main-search-results-line-title">
+			<span class="flexible-title-icon">
+				<svg class="fmi-icon" data-icon="chevron-right"></svg>
+			</span>
+			<span class="flexible-title-text">
+				Sur le site
+			</span>
+		</h2>
+
+		<div class="main-search-results-line-content">
+			{% for page in pages %}
+				<article class="main-search-results-line-item item-page">
+					<a href="{{ page.link }}">&nbsp;</a>
+					<div class="item-page-content">
+						<div class="item-page-title">{{ page.title }}</div>
+					</div>
+					<div class="item-page-icon">
+						<svg class="fmi-icon" data-icon="chevron-right"></svg>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+
+{% if events|length == 0 and articles|length == 0 and pages|length == 0 %}
+	<div class="main-search-results-empty">
+		<div class="main-search-results-empty-icon">
+			<svg class="fmi-icon" data-icon="search"></svg>
+		</div>
+		<div class="main-search-results-empty-text">Désolé, aucun résultat ne correspond à votre recherche : <strong>{{ s|e }}</strong></div>
+	</div>
+{% endif %}

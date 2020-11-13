@@ -1,0 +1,76 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="{{ post.class }}">
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+
+			<section class="agenda">
+				<aside class="filters agenda-filters">
+					<ul class="filters-list">
+						<li class="filters-item">
+							<a href="{{ links.agenda }}" class="filters-item-link {% if not category_active %}filters-item-link--active{% endif %}">
+								<span class="filters-item-text">Tous</span>
+								<span class="filters-item-checkbox"><svg class="fmi-icon" data-icon="check"></svg></span>
+							</a>
+						</li>
+						{% for category in categories %}
+							<li class="filters-item">
+								<a href="{{ links.agenda }}?category={{ category.slug }}" class="filters-item-link {% if category_active == category.slug %}filters-item-link--active{% endif %} filters-item-link--{{ category.slug }}">
+									<span class="filters-item-icon"></span>
+									<span class="filters-item-text">{{ category.name }}</span>
+									<span class="filters-item-checkbox"><svg class="fmi-icon" data-icon="check"></svg></span>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</aside>
+
+				<div class="agenda-calendar">
+					{% include 'components/calendar-events.twig' with { calendar: calendar } %}
+
+					<div class="agenda-calendar-open">
+						<svg class="fmi-icon" data-icon="calendar"></svg>
+						<span>Afficher le calendrier</span>
+					</div>
+
+					<div class="agenda-calendar-close">
+						<svg class="fmi-icon" data-icon="close"></svg>
+						<span>Masquer le calendrier</span>
+					</div>
+				</div>
+
+				<div class="agenda-list">
+					<div class="list-posts agenda-list-wrapper">
+						{% for event in events %}
+							{% set category = event.category %}
+
+							{% if event.is_future() and (not category_active or (category and category_active == event.category.slug)) %}
+								{% set date_start = event.get_date_start() %}
+								<article class="list-posts-event agenda-list-item {% if category %}list-posts-event--{{ category.slug }}{% endif %}" data-month="{{ date_start.monthyear }}">
+									<a href="{{ event.link }}">&nbsp;</a>
+									<div class="list-posts-event-date">
+										<span class="list-posts-event-date-day">{{ date_start.daynum }}</span>
+										<span class="list-posts-event-date-month">{{ date_start.monthshort }}</span>
+									</div>
+									<div class="list-posts-event-content">
+										<h3 class="list-posts-event-content-title">{{ event.title }}</h3>
+										{% if event.organizer %}
+											<div class="list-posts-event-content-organizer">by <span>{{ event.organizer }}</span></div>
+										{% endif %}
+										<p class="list-posts-event-content-excerpt">{{ event.preview.read_more('') }}</p>
+										{% if event.restricted %}
+											<div class="list-posts-event-content-restricted">Réservé aux membres de l'association</div>
+										{% endif %}
+									</div>
+								</article>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+{% endblock %}

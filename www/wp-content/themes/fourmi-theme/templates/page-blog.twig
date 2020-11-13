@@ -1,0 +1,50 @@
+{% extends "page.twig" %}
+
+{% block page_content %}
+	<section class="main-content">
+		<div class="container">
+			<article id="post-{{ post.ID }}>" class="{{ post.class }}">
+				{% include 'components/flexibles.twig' with { flexibles: post.get_flexibles() } %}
+			</article>
+
+			<section class="blog">
+				<aside class="filters">
+					<ul class="filters-list">
+						<li class="filters-item">
+							<a href="{{ links.blog }}" class="filters-item-link {% if not category_active %}filters-item-link--active{% endif %}">
+								<span class="filters-item-text">Tous</span>
+								<span class="filters-item-checkbox"><svg class="fmi-icon" data-icon="check"></svg></span>
+							</a>
+						</li>
+						{% for category in categories %}
+							<li class="filters-item">
+								<a href="{{ links.blog }}?category={{ category.slug }}" class="filters-item-link {% if category_active == category.slug %}filters-item-link--active{% endif %}">
+									<span class="filters-item-text">{{ category.name }}</span>
+									<span class="filters-item-checkbox"><svg class="fmi-icon" data-icon="check"></svg></span>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</aside>
+
+				<div class="list-posts">
+					{% for article in query.get_posts %}
+						<article class="list-posts-post">
+							<a href="{{ article.link }}">&nbsp;</a>
+							<figure class="list-posts-post-image">
+								<img src="{{ article.thumbnail.src('fmi-3') }}">
+							</figure>
+							<div class="list-posts-post-content">
+								<div class="list-posts-post-title">{{ article.title }}</div>
+								<div class="list-posts-post-date">{{ article.date }}</div>
+								<div class="list-posts-post-excerpt">{{ article.preview.read_more('') }}</div>
+							</div>
+						</article>
+					{% endfor %}
+				</div>
+
+				{% include 'components/pagination.twig' with { pagination: query.pagination } %}
+			</section>
+		</div>
+	</section>
+{% endblock %}

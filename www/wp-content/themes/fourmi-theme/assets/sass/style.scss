@@ -1,0 +1,36 @@
+// Vendors
+@import './node_modules/normalize-scss/sass/normalize/import-now';
+@import './node_modules/swiper/swiper-bundle';
+
+// Configuration
+@import 'variables';
+@import 'mixins';
+
+// Layout
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/aside';
+
+// Elements
+@import 'elements/texts';
+@import 'elements/buttons';
+@import 'elements/forms';
+@import 'elements/fourmi-blank';
+
+// Components
+@import 'components/breadcrumb';
+@import 'components/filters';
+@import 'components/menu-home';
+@import 'components/page-title';
+@import 'components/calendar-events';
+@import 'components/slider-images';
+@import 'components/list-posts';
+@import 'components/pagination';
+@import 'components/flexibles';
+@import 'components/popin';
+
+// Pages
+@import 'pages/agenda';
+@import 'pages/blog';
+@import 'pages/single';

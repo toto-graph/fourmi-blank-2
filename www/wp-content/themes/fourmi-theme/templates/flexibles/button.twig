@@ -1,0 +1,11 @@
+{% if flexible.link.type == 'internal' %}
+	<a href="{{ flexible.link.link_internal.link }}" class="button -{{ flexible.color }}">
+{% elseif flexible.link.type == 'external' %}
+	<a href="{{ flexible.link.link_external }}" target="_blank" class="button -{{ flexible.color }}">
+{% endif %}
+	{% if flexible.icon %}
+		<svg class="fmi-icon" data-icon="{{ flexible.icon }}"></svg>
+	{% endif %}
+	<span>{{ flexible.text }}</span>
+	<svg class="fmi-icon" data-icon="chevron-right"></svg>
+</a>

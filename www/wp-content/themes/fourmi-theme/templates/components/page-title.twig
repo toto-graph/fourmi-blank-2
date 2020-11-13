@@ -1,0 +1,79 @@
+<section class="main-page-title">
+	<div class="main-page-title-wrapper">
+		<div class="main-page-title-image">
+			{% if post.thumbnail %}
+				<img src="{{ post.thumbnail.src('fmi-1') }}" alt="{{ post.title }}">
+			{% endif %}
+		</div>
+		{% if title %}
+			<div class="container">
+				<h1 class="main-page-title-text">{{ post.title }}</h1>
+			</div>
+		{% endif %}
+		{% if post.post_type == 'event' %}
+			<div class="main-page-title-event">
+				<div class="main-page-title-event-container">
+					<div class="main-page-title-event-wrapper">
+						{% if post.location %}
+							<div class="main-page-title-event-line">
+								<div class="main-page-title-event-line-icon">
+									<svg class="fmi-icon" data-icon="location"></svg>
+								</div>
+								<div class="main-page-title-event-line-text">
+									{{ post.location }}
+								</div>							
+							</div>
+						{% endif %}
+						{% if post.date_start %}
+							<div class="main-page-title-event-line">
+								{% set date_start = post.get_date_start() %}
+								<div class="main-page-title-event-line-icon">
+									<svg class="fmi-icon" data-icon="calendar"></svg>
+								</div>
+								<div class="main-page-title-event-line-text">
+									{{ date_start.text }}
+									<br>à {{ date_start.time }}
+								</div>
+							</div>
+						{% endif %}
+						{% if post.duration %}
+							<div class="main-page-title-event-line">
+								<div class="main-page-title-event-line-icon">
+									<svg class="fmi-icon" data-icon="time"></svg>
+								</div>
+								<div class="main-page-title-event-line-text">
+									Durée : {{ post.duration }}
+								</div>
+							</div>
+						{% endif %}
+						<div class="main-page-title-event-line">
+							<div class="main-page-title-event-line-price">
+								{% if post.price %}
+									{{ post.price }}€
+								{% else %}
+									Gratuit
+								{% endif %}
+							</div>
+						</div>
+						{% if post.restricted %}
+							<div class="main-page-title-event-line">
+								<div class="main-page-title-event-line-restricted">
+									Réservé aux membres de l'association
+								</div>
+							</div>
+						{% endif %}
+						{% if post.link_booking %}
+							<div class="main-page-title-event-line">
+								<div class="main-page-title-event-line-link">
+									<a href="{{ post.link_booking }}" class="button -green-medium -block" target="_blank">
+										Je m'inscris
+									</a>
+								</div>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</section>

@@ -1,0 +1,27 @@
+{% if pagination %}
+	<ul class="pagination">
+		{% if pagination.prev %}
+			<li class="pagination-item">
+				<a href="{{ pagination.prev.link }}" class="pagination-prev {{ pagination.prev.link|length ? '' : 'pagination-prev--disabled' }}">
+					<svg class="fmi-icon" data-icon="chevron-left"></svg>
+				</a>
+			</li>
+		{% endif %}
+		{% for page in pagination.pages %}
+			<li class="pagination-item">
+				{% if page.link %}
+					<a href="{{ page.link }}" class="pagination-number">{{ page.title }}</a>
+				{% else %}
+					<span class="pagination-number pagination-number--current">{{ page.title }}</span>
+				{% endif %}
+			</li>
+		{% endfor %}
+		{% if pagination.next %}
+			<li class="pagination-item">
+				<a href="{{ pagination.next.link }}" class="pagination-next {{ pagination.next.link|length ? '' : 'pagination-next--disabled' }}">
+					<svg class="fmi-icon" data-icon="chevron-right"></svg>
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+{% endif %}

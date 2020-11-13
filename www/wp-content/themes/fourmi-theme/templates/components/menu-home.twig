@@ -1,0 +1,12 @@
+<div class="menu">
+	{% for item in items %}
+		{% set current = item.current or 'current-page-ancestor' in item.class %}
+		<div class="menu-item {% if current %}menu-item--active{% endif %}">
+			<a href="{{ item.link }}" class="menu-item-link">&nbsp;</a>
+			<figure class="menu-item-image">
+				<img src="{{ item.thumbnail.src('fmi-3') }}">
+			</figure>
+			<div class="menu-item-title">{{ item.title }}</div>
+		</div>
+	{% endfor %}
+</div>

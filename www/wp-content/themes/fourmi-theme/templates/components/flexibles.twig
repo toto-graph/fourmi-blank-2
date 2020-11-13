@@ -1,0 +1,5 @@
+{% for flexible in flexibles %}
+	<div class="flexible flexible--{{ flexible.acf_fc_layout }}">
+		{% include 'flexibles/' ~ flexible.acf_fc_layout ~ '.twig' ignore missing with { flexible: flexible } %}
+	</div>
+{% endfor %}
